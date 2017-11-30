@@ -27,6 +27,14 @@ public class Shipping {
 
     private Date updateTime;
 
+    public Shipping(Integer id, Integer userId, String receiverName, String receiverPhone, String receiverMobile) {
+        this.id = id;
+        this.userId = userId;
+        this.receiverName = receiverName;
+        this.receiverPhone = receiverPhone;
+        this.receiverMobile = receiverMobile;
+    }
+
     public Shipping(Integer id, Integer userId, String receiverName, String receiverPhone, String receiverMobile, String receiverProvince, String receiverCity, String receiverDistrict, String receiverAddress, String receiverZip, Date createTime, Date updateTime) {
         this.id = id;
         this.userId = userId;

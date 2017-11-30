@@ -1,5 +1,6 @@
-package com.company.dao.idao;
+package com.company.service.iservice;
 
+import com.company.common.ServerResponse;
 import com.company.dao.pojo.Cart;
 import com.company.dao.vo.CartProduct;
 import com.company.dao.vo.CartProductVoList;
@@ -7,30 +8,21 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface CartMapper {
+/**
+ * Created by Administrator on 2017/11/28 0028.
+ */
+public interface CartService {
 
-    int deleteByPrimaryKey(Integer id);//根据id删除购物车商品
-
-    int insert(Cart record);//添加商品
-
-    int insertSelective(Cart record);//动态添加
-
-    Cart selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Cart record);
-
-    int updateByPrimaryKey(Cart record);
-
-    //展示购物车商品
-    List<CartProduct> findAllProduct(@Param("userId") Integer userId);
+    //展示购物车商品列表
+    ServerResponse<CartProductVoList> findAllProduct(@Param("userId") Integer userId);
 
     //购物车添加商品
-    int addProduct(@Param("userId") int userId, @Param("productId") int productId, @Param("count") int count);
+    ServerResponse<CartProductVoList> addProduct(@Param("userId") int userId, @Param("productId") int productId, @Param("count") int count);
 
     //更新购物车某个产品数量
     int updateNum(@Param("userId") int userId, @Param("productId") int productId, @Param("count") int count);
 
-    //移除购物车某个产品
+    //移除购物车某个产品(批量删除)
     int deleteProduct(@Param("userId") int userId, @Param("productId") int productId);
 
     //购物车选中某个商品
